@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .summary-box {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .summary-box h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .summary-box pre {
+            font-family: inherit;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resume Summary</h1>
+    <div class="summary-box">
+        <h2>Summary:</h2>
+        <pre>{{ summary }}</pre>
+    </div>
+    <a href="/">&#8592; Summarize another resume</a>
+</body>
+</html>
