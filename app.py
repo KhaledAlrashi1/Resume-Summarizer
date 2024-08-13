@@ -1,53 +1,77 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 from openai import OpenAI
 import os
+from docx import Document
+import PyPDF2
+import pdfplumber
 
 app = Flask(__name__)
 
 # Load OpenAI API key from environment variable
 client = OpenAI(
-    api_key=os.environ.get("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"),
+    api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
-# Raise an error if the OpenAI API key is not set
 if not client:
     raise ValueError("The OpenAI API key is not set. Please set the OPENAI_API_KEY environment variable.")
 
-def summarize_resume(resume_text, max_attempts=3):
+# Function to extract text from a Word document
+def extract_text_from_docx(docx_file):
+    doc = Document(docx_file)
+    text = '\n'.join([para.text for para in doc.paragraphs])
+    return text
+
+# Function to extract text from a PDF using PyPDF2 (fallback option)
+def extract_text_from_pdf(pdf_file):
+    text = ""
+    pdf_reader = PyPDF2.PdfReader(pdf_file)
+    for page in pdf_reader.pages:
+        text += page.extract_text()
+    return text
+
+# Function to interact with GPT-4o-Mini to read and summarize the resume
+def gpt_read_resume(resume_text):
+    # System message guiding the model
     system_message = {
         "role": "system",
         "content": """
-        You are an AI assistant specialized in summarizing resumes concisely. 
-        Please provide a brief summary highlighting the candidate's education, experience, and key skills.
+        You are an AI assistant. Given the text of a resume, please read it carefully
+        
+        Summarize it in a few sentences and answer the following questions:
+        What is the highest degree level they have?
+        Do they have work experience?
+        How many years of experience do they have?
+        Are there any other important information that adds a value to the candidate (e.g. skills, certifications.)?
+        
+        Write your answers in one short paragraph.
+        Do not mention their contact information. 
         """
     }
 
     messages = [system_message, {"role": "user", "content": resume_text}]
     summary = ""
     attempts = 0
+    max_attempts = 4
 
     while attempts < max_attempts:
         response = client.chat.completions.create(
-            model="gpt-4o-mini",  # Ensure this is the correct model name
+            model="gpt-4o-mini",  # choose the model
             messages=messages,
-            max_tokens=150,  # Increase the summary length
+            max_tokens=200,  # the summary length
             stop=["\n"]  # Add a stop sequence to gracefully end the output
         )
 
-        # Extract the generated text
         generated_text = response.choices[0].message.content
+
         summary += generated_text
 
-        # Check if the summary ends with a complete sentence
         if generated_text.strip().endswith(('.', '!', '?')):
             break
         else:
-            # Append the generated text as the next part of the prompt for continuation
             messages.append({"role": "user", "content": generated_text})
         
         attempts += 1
 
-    # Finalize and return the summary
     return summary
 
 @app.route('/')
@@ -56,8 +80,20 @@ def index():
 
 @app.route('/summarize', methods=['POST'])
 def summarize():
-    resume_text = request.form['resume_text']
-    summary = summarize_resume(resume_text)
+    file = request.files['file']
+    file_extension = file.filename.split('.')[-1].lower()
+
+    # Extract text based on file type
+    if file_extension == 'pdf':
+        resume_text = extract_text_from_pdf(file)
+    elif file_extension == 'docx':
+        resume_text = extract_text_from_docx(file)
+    elif file_extension == 'txt':
+        resume_text = file.read().decode('utf-8')
+    else:
+        return "Unsupported file format", 400
+
+    summary = gpt_read_resume(resume_text)
     return render_template('summary.html', summary=summary)
 
 if __name__ == '__main__':
