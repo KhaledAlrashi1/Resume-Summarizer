@@ -74,20 +74,47 @@ def extract_text_from_pdf(pdf_file):
         text += page.extract_text()  # Extract text from each page
     return text
 
-# Function to extract text from image files using OCR (Optical Character Recognition)
-def extract_text_from_image(image_file):
+# # Function to extract text from image files using OCR (Optical Character Recognition)
+# def extract_text_from_image(image_file):
+#     """
+#     Extracts text from an image file using pytesseract (OCR).
+
+#     Args:
+#     image_file: An image file object (e.g., JPG, PNG).
+
+#     Returns:
+#     A string containing the extracted text from the image.
+#     """
+#     image = Image.open(image_file)  # Open the image file
+#     text = pytesseract.image_to_string(image)  # Use Tesseract to extract text from the image
+#     return text
+
+# Function to convert an image to DOCX by extracting text and saving it in DOCX
+def convert_image_to_docx_and_extract_text(image_file):
     """
-    Extracts text from an image file using pytesseract (OCR).
+    Converts an image to a DOCX document by extracting text using OCR and saving it into a DOCX file.
 
     Args:
     image_file: An image file object (e.g., JPG, PNG).
 
     Returns:
-    A string containing the extracted text from the image.
+    extracted_text: A string containing the extracted text from the image.
     """
-    image = Image.open(image_file)  # Open the image file
-    text = pytesseract.image_to_string(image)  # Use Tesseract to extract text from the image
-    return text
+    # Open the image file
+    image = Image.open(image_file)
+    
+    # Use Tesseract to extract text from the image
+    extracted_text = pytesseract.image_to_string(image)
+    
+    # Create a new DOCX document and add the extracted text
+    doc = Document()
+    doc.add_paragraph(extracted_text)
+    
+    # Save the DOCX file temporarily
+    docx_path = 'extracted_image_text.docx'
+    doc.save(docx_path)
+    
+    return extracted_text, docx_path
 
 # Function to interact with GPT-4o and summarize the resume text
 def gpt_read_resume(resume_text):
@@ -180,8 +207,9 @@ def summarize():
         resume_text = extract_text_from_docx(file)
     elif file_extension == 'txt':
         resume_text = file.read().decode('utf-8')
-    elif file_extension in ['jpg', 'jpeg', 'png']:  # New: Support for image formats
-        resume_text = extract_text_from_image(file)
+    elif file_extension in ['jpg', 'jpeg', 'png']:
+        # Convert image to DOCX, extract text, and then process it
+        resume_text, docx_path = convert_image_to_docx_and_extract_text(file)
     else:
         return "Unsupported file format", 400  # Return an error if file format is unsupported
 
