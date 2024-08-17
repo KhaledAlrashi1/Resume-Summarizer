@@ -127,6 +127,10 @@ Follow these steps to set up the application locally:
 5. **Access the Application**
    The application will be accessible at `http://127.0.0.1:5000` in your web browser.
 
+--- 
+Check out the following link to deploy the application on Heroku: 
+- https://devcenter.heroku.com/articles/getting-started-with-python
+
 ---
 
 ### **Usage Instructions**
