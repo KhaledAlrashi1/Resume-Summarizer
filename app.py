@@ -6,10 +6,7 @@ from docx import Document  # For reading DOCX files (Microsoft Word format)
 import PyPDF2  # For extracting text from PDF files
 import pdfplumber  # Another library for working with PDFs (not used here, can be removed if unnecessary)
 from PIL import Image  # For handling image files (e.g., JPG, PNG)
-# import pytesseract  # For extracting text from images using OCR
-
-import img2pdf
-from io import BytesIO
+import pytesseract  # For extracting text from images using OCR
 
 # Flask-Limiter for setting request limits to prevent abuse
 from flask_limiter import Limiter
@@ -17,6 +14,9 @@ from flask_limiter.util import get_remote_address
 
 # Initialize Flask app
 app = Flask(__name__)
+
+# Manually set the tesseract path
+pytesseract.pytesseract.tesseract_cmd = "/app/.heroku/python/bin/tesseract"
 
 # # Set the path to Tesseract executable in your virtual environment
 # pytesseract.pytesseract.tesseract_cmd = r'/Users/khaledalrashidi/anaconda3/envs/ai_env/bin/tesseract'
@@ -69,46 +69,20 @@ def extract_text_from_pdf(pdf_file):
         text += page.extract_text()  # Extract text from each page
     return text
 
-# # Function to extract text from image files using OCR (Optical Character Recognition)
-# def extract_text_from_image(image_file):
-#     """
-#     Extracts text from an image file using pytesseract (OCR).
-
-#     Args:
-#     image_file: An image file object (e.g., JPG, PNG).
-
-#     Returns:
-#     A string containing the extracted text from the image.
-#     """
-#     image = Image.open(image_file)  # Open the image file
-#     text = pytesseract.image_to_string(image)  # Use Tesseract to extract text from the image
-#     return text
-
-# Function to convert an image to PDF and then extract text from the PDF
-def convert_image_to_pdf_and_extract_text(image_file):
+# Function to extract text from image files using OCR (Optical Character Recognition)
+def extract_text_from_image(image_file):
     """
-    Converts an image to a PDF, extracts text using PyPDF2, and returns it as a string.
+    Extracts text from an image file using pytesseract (OCR).
 
     Args:
     image_file: An image file object (e.g., JPG, PNG).
 
     Returns:
-    extracted_text: A string containing the extracted text from the PDF.
+    A string containing the extracted text from the image.
     """
-    # Convert the image to a PDF
-    pdf_bytes = img2pdf.convert(image_file)
-    
-    # Create a BytesIO object to simulate file reading in memory
-    pdf_stream = BytesIO(pdf_bytes)
-
-    # Use PyPDF2 to extract text from the PDF
-    pdf_reader = PyPDF2.PdfReader(pdf_stream)
-    extracted_text = ""
-
-    for page in pdf_reader.pages:
-        extracted_text += page.extract_text()
-
-    return extracted_text
+    image = Image.open(image_file)  # Open the image file
+    text = pytesseract.image_to_string(image)  # Use Tesseract to extract text from the image
+    return text
 
 # Function to interact with GPT-4o and summarize the resume text
 def gpt_read_resume(resume_text):
@@ -201,9 +175,8 @@ def summarize():
         resume_text = extract_text_from_docx(file)
     elif file_extension == 'txt':
         resume_text = file.read().decode('utf-8')
-    elif file_extension in ['jpg', 'jpeg', 'png']:
-        # Convert image to PDF and extract text from the PDF
-        resume_text = convert_image_to_pdf_and_extract_text(file)
+    elif file_extension in ['jpg', 'jpeg', 'png']:  # New: Support for image formats
+        resume_text = extract_text_from_image(file)
     else:
         return "Unsupported file format", 400  # Return an error if file format is unsupported
 
