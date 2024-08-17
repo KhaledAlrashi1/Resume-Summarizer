@@ -15,6 +15,17 @@ from flask_limiter.util import get_remote_address
 # Initialize Flask app
 app = Flask(__name__)
 
+# Set the path to Tesseract executable in your virtual environment
+pytesseract.pytesseract.tesseract_cmd = r'/Users/khaledalrashidi/anaconda3/envs/ai_env/bin/tesseract'
+
+# # Check if the app is running on Heroku
+# if 'DYNO' in os.environ:
+#     # Set the path for Tesseract in the Heroku environment
+#     pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+# else:
+#     # Use the local path (you can change this to your local Tesseract path)
+#     pytesseract.pytesseract.tesseract_cmd = "/Users/khaledalrashidi/anaconda3/envs/ai_env/bin/tesseract"
+
 # Set up the rate limiter to allow a maximum of 50 requests per day per IP address
 limiter = Limiter(
     get_remote_address,  # Use the remote IP address of the client to limit requests
@@ -189,9 +200,9 @@ def ratelimit_handler(e):
 # Main entry point to run the Flask app
 if __name__ == '__main__':
     
-    # Run locally
-    app.run(debug=True)  # Run the app in debug mode for easier troubleshooting during development
+    # # Run locally
+    # app.run(debug=True)  # Run the app in debug mode for easier troubleshooting during development
 
-    # # Run on Heroku
-    # port = int(os.environ.get('PORT', 5000))  # Read PORT from environment variable, or default to 5000
-    # app.run(host='0.0.0.0', port=port, debug=True)  # Bind to 0.0.0.0 to ensure it works on Heroku
+    # Run on Heroku
+    port = int(os.environ.get('PORT', 5000))  # Read PORT from environment variable, or default to 5000
+    app.run(host='0.0.0.0', port=port, debug=True)  # Bind to 0.0.0.0 to ensure it works on Heroku
