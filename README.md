@@ -8,6 +8,13 @@ resumes in various formats, extracting key information and presenting it in a co
 and by anyone. 
 
 ---
+![Home Page](/images/Home_Page.png)
+
+---
+
+![Summary Page](/images/Summary_Page.png)
+
+---
 
 ### **Key Features**
 
