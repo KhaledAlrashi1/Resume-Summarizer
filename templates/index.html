@@ -2,91 +2,75 @@
 <html lang="en">
 
 <head>
+    <!-- Metadata and page setup -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Summarizer</title>
+
+    <!-- Bootstrap CSS for styling and responsiveness -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font: Inter for a clean, modern font style -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Custom styles for the page -->
     <style>
+        /* General body styling: font, background, layout */
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(to left, #003366 74%, #ffffff 25.5%);
+            background: linear-gradient(to left, #003366 74%, #ffffff 25.5%); /* Blue to white gradient */
             background-size: 100% 100%;
-            padding-top: 150px;
-            color: #333333;
-            /* position: relative; */
-            min-height: 100vh;
+            padding-top: 150px; /* Adds space at the top */
+            color: #333333; /* Default text color */
+            min-height: 100vh; /* Ensure body takes full height */
             margin: 0;
-            overflow: hidden;
+            overflow: hidden; /* Prevent scrollbars */
         }
 
-        /* Flex-grow container to take up available space */
+        /* Flex-grow container to center the content vertically */
         .flex-grow {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-    
-        /* Background shapes and animations */
+
+        /* Keyframe animations for background shapes (simple floating effect) */
         @keyframes moveShape1 {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(-50px, 20px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, 20px); }
+            100% { transform: translate(0, 0); }
         }
 
         @keyframes moveShape2 {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(30px, -40px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -40px); }
+            100% { transform: translate(0, 0); }
         }
 
         @keyframes moveShape3 {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(-40px, 30px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-40px, 30px); }
+            100% { transform: translate(0, 0); }
         }
 
         @keyframes moveShape4 {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(50px, -40px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(50px, -40px); }
+            100% { transform: translate(0, 0); }
         }
 
+        /* Background abstract shapes with animation */
         .abstract-shape-1 {
             position: absolute;
             top: 20%;
             right: 5%;
             width: 85px;
             height: 85px;
-            background-color: #ff4c4c;
-            border-radius: 50%;
-            z-index: 0;
-            animation: moveShape1 5s infinite alternate ease-in-out;
+            background-color: #ff4c4c; /* Red circle */
+            border-radius: 50%; /* Makes the shape a circle */
+            z-index: 0; /* Places behind the main content */
+            animation: moveShape1 5s infinite alternate ease-in-out; /* Animation applied */
         }
 
         .abstract-shape-2 {
@@ -95,7 +79,7 @@
             left: 5%;
             width: 95px;
             height: 95px;
-            background-color: #003366;
+            background-color: #003366; /* Blue circle */
             border-radius: 50%;
             z-index: 0;
             animation: moveShape2 7s infinite alternate ease-in-out;
@@ -107,7 +91,7 @@
             left: 55%;
             width: 75px;
             height: 75px;
-            background-color: #ffffff;
+            background-color: #ffffff; /* White circle */
             border-radius: 50%;
             z-index: 0;
             animation: moveShape3 5s infinite alternate ease-in-out;
@@ -125,92 +109,103 @@
             animation: moveShape4 6s infinite alternate ease-in-out;
         }
 
-        /* Red horizontal line */
+        /* Red horizontal line across the bottom of the page */
         .red-line {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 50px;
-            background-color: #ff4c4c;
+            width: 100%; /* Spans the entire width */
+            height: 50px; /* Thickness of the line */
+            background-color: #ff4c4c; /* Red color */
             bottom: 0;
             left: 0;
         }
 
-        /* Navbar */
+        /* Navbar styling */
         .navbar {
-            background-color: transparent !important;
-            box-shadow: none !important;
+            background-color: transparent !important; /* Transparent background */
+            box-shadow: none !important; /* Removes shadow */
         }
 
+        /* Navbar brand/title styling */
         .navbar-brand {
-            font-weight: 700;
-            font-size: 1.85rem;
-            color: #003366;
-            letter-spacing: 2px;
-            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1;
+            font-weight: 700; /* Bold text */
+            font-size: 1.85rem; /* Large font size */
+            color: #003366; /* Dark blue */
+            letter-spacing: 2px; /* Adds space between letters */
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            z-index: 1; /* Ensure it stays above background shapes */
         }
 
-        /* Content wrapper */
+        /* Container for the form (centered content) */
         .container {
-            max-width: 600px;
-            /* margin: auto; */
-            position: relative;
-            z-index: 1;
+            max-width: 600px; /* Restricts width */
+            position: relative; /* Required for stacking order (z-index) */
+            z-index: 1; /* Ensure content is above background shapes */
         }
 
-        /* Card styling */
+        /* Card styling for the upload form */
         .card {
             padding: 50px;
             border: none;
-            border-radius: 25px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
-            color: #333333;
+            border-radius: 25px; /* Rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            background-color: #ffffff; /* White background */
+            color: #333333; /* Default text color */
         }
 
+        /* Card heading style */
         .card h3 {
-            color: #003366;
+            color: #003366; /* Dark blue */
         }
 
+        /* Button styling for the submit button */
         .btn-primary {
-            background-color: #ff4c4c;
+            background-color: #ff4c4c; /* Red background */
             border: none;
-            font-weight: 500;
-            border-radius: 10px;
-            transition: background-color 0.3s, box-shadow 0.3s;
+            font-weight: 500; /* Medium-bold text */
+            border-radius: 10px; /* Rounded button */
+            transition: background-color 0.3s, box-shadow 0.3s; /* Smooth hover transition */
         }
 
+        /* Button hover effect */
         .btn-primary:hover {
-            background-color: #e63b3b;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            background-color: #e63b3b; /* Darker red on hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Adds shadow on hover */
         }
 
+        /* Label for the file input field */
         .form-label {
-            color: #003366;
+            color: #003366; /* Dark blue */
         }
     </style>
 </head>
 
 <body>
+    <!-- Navbar section (top fixed) -->
     <nav class="navbar navbar-light fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Resume Summarizer</a>
+            <a class="navbar-brand" href="#">Resume Summarizer</a> <!-- Website title -->
         </div>
     </nav>
 
+    <!-- Flex container to center the content -->
     <div class="flex-grow">
-        <div class="container mt-5">
-            <div class="card">
-                <h3 class="text-center mb-4">Upload a Resume File</h3>
+        <div class="container mt-5"> <!-- Main container for the form -->
+            <div class="card"> <!-- Card component for the form -->
+                <h3 class="text-center mb-4">Upload a Resume File</h3> <!-- Heading -->
+                
+                <!-- Form for uploading a resume -->
                 <form action="/summarize" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="file" class="form-label">
+                            <!-- File input label with an icon -->
                             <i class="bi bi-cloud-upload-fill"></i> Select a file (PDF, DOCX, TXT, JPG, PNG):
                         </label>
+                        <!-- Input field to upload the file (accepts multiple formats) -->
                         <input type="file" class="form-control" name="file" accept=".pdf, .docx, .txt, .jpg, .jpeg, .png" required>
                     </div>
                     <div class="d-grid">
+                        <!-- Submit button -->
                         <button type="submit" class="btn btn-primary btn-lg">Summarize</button>
                     </div>
                 </form>
@@ -218,7 +213,7 @@
         </div>
     </div>
 
-    <!-- Red line always at the bottom -->
+    <!-- Red line always at the bottom of the page -->
     <div class="red-line"></div>
 
     <!-- Abstract shapes in the background -->
@@ -227,6 +222,7 @@
     <div class="abstract-shape-3"></div>
     <div class="abstract-shape-4"></div>
 
+    <!-- Bootstrap JavaScript for additional functionality -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
