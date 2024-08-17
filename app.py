@@ -15,8 +15,8 @@ from flask_limiter.util import get_remote_address
 # Initialize Flask app
 app = Flask(__name__)
 
-# Set the path to Tesseract executable in your virtual environment
-pytesseract.pytesseract.tesseract_cmd = r'/Users/khaledalrashidi/anaconda3/envs/ai_env/bin/tesseract'
+# # Set the path to Tesseract executable in your virtual environment
+# pytesseract.pytesseract.tesseract_cmd = r'/Users/khaledalrashidi/anaconda3/envs/ai_env/bin/tesseract'
 
 # # Check if the app is running on Heroku
 # if 'DYNO' in os.environ:
