@@ -195,9 +195,9 @@ def ratelimit_handler(e):
 # Main entry point to run the Flask app
 if __name__ == '__main__':
     
-    # # Run locally
-    # app.run(debug=True)  # Run the app in debug mode for easier troubleshooting during development
+    # Run locally
+    app.run(debug=True)  # Run the app in debug mode for easier troubleshooting during development
 
-    # Run on Heroku
-    port = int(os.environ.get('PORT', 5000))  # Read PORT from environment variable, or default to 5000
-    app.run(host='0.0.0.0', port=port, debug=True)  # Bind to 0.0.0.0 to ensure it works on Heroku
+    # # Run on Heroku
+    # port = int(os.environ.get('PORT', 5000))  # Read PORT from environment variable, or default to 5000
+    # app.run(host='0.0.0.0', port=port, debug=True)  # Bind to 0.0.0.0 to ensure it works on Heroku

@@ -1,0 +1,79 @@
+Khaled Alrashidi
+Phone: +965 9890 0002 - Email: alrashidi.kha@gmail.com - LinkedIn: https://www.linkedin.com/in/khaled-alrashidi1/ Website: https://github.com/KhaledAlrashi1
+
+Professional Summary
+Khaled is recent graduate from the University of Southern California where he earned his master's in Electrical
+and Computer Engineering with an emphasis on Machine Learning and Data Science. He has worked on several
+machine learning and data science projects and has a strong passion for utilizing AI to beneﬁt both individuals and
+the broader community.
+
+Education
+Completed coursework towards Master of Science (M.S.) : Machine Learning and Data Science, May 2024
+University of Southern California - Los Angeles, CA
+GPA: 3.39
+Awards & Honors
+• Leader of the Year Award - Apr 2023
+• Distinguished Leadership Award - Apr 2024
+Completed coursework towards Bachelor of Science - Computer Engineering : June 2022
+Portland State University - Portland, OR
+GPA: 3.62
+Awards & Honors
+• President's List - Issued by Stephen Percy
+Extracurricular Activities
+• Tau Beta Pi (ΤΒΠ)
+• IEEE-Eta Kappa Nu (ΗΚΝ)
+• Golden Key International Honour Society (GK)
+
+Skills
+
+•
+•
+•
+•
+•
+
+Machine and Deep Learning
+Python, SQL, C++
+Generative AI
+EDA and Data Analysis
+Model Evaluation and Selection
+
+Certiﬁcations
+
+•
+•
+
+Data Scientist in Python
+MLOps Fundamentals
+
+•
+•
+•
+•
+•
+
+Data Science
+
+•
+
+Python Data Fundamentals
+
+Supervised and Unsupervised Learning
+Data Cleaning and Preprocessing
+Data Visualization
+API Development
+
+Projects
+Gratitude Companion: A web application that helps make the practice of gratitude more engaging and meaningful
+by asking the user thought-provoking questions. The app integrates GPT-4o API for better text processing and
+understanding.
+Credit Card Fraud Detector: The project uses machine learning to predict whether a transaction is legitimate or
+fraud, given features such as time, amount, and frequency.
+California House Price Predictor: The project uses machine learning to predict a house price in California, given its
+features such as size of the house and number of rooms in the house.
+Titanic Survival Predictor: The project uses machine learning to predict the survival of a passenger given certain
+characteristics such as age, passenger class, and gender.
+Sentiment Analysis on IMDB Movie Reviews: The project uses deep learning to analyze and predict the sentiment
+of reviews on IMDB movies and classiﬁes them into positive or negative.
+
+
