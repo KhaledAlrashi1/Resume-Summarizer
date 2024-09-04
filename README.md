@@ -5,11 +5,11 @@
 The **Resume Summarizer Application** is a web-based tool designed to streamline the recruitment process for NBK’s Talent Acquisition team at the HR department. By automating the summarization of resumes, this application helps reduce manual workload, allowing the team to focus on more important tasks. The application uses GPT-4o for processing and understanding and can process resumes in various formats, extracting key information and presenting it in a concise, structured summary. While it was designed for the Talent Acquisition team at NBK, anyone can use this application.
 
 ---
-![Home Page](/images/home_page.png)
+![Home Page](/images/Home_Page.png)
 
 ---
 
-![Summary Page](/images/summary_page.png)
+![Summary Page](/images/Summary_Page.png)
 
 ---
 
