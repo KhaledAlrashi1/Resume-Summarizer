@@ -2,17 +2,14 @@
 
 ### **Overview**
 
-The **Resume Summarizer Application** is a web-based tool designed to streamline the recruitment process for NBK’s Talent Acquisition team. By automating the summarization of resumes, 
-this application helps reduce manual workload, allowing the team to focus on more important tasks. The application is powered by artificial intelligence (AI) and can process 
-resumes in various formats, extracting key information and presenting it in a concise, structured summary. While it was designed for the Talent Acquisition team at NBK, it can be used for 
-and by anyone. 
+The **Resume Summarizer Application** is a web-based tool designed to streamline the recruitment process for NBK’s Talent Acquisition team at the HR department. By automating the summarization of resumes, this application helps reduce manual workload, allowing the team to focus on more important tasks. The application uses GPT-4o for processing and understanding and can process resumes in various formats, extracting key information and presenting it in a concise, structured summary. While it was designed for the Talent Acquisition team at NBK, anyone can use this application.
 
 ---
-![Home Page](/images/Home_Page.png)
+![Home Page](/images/home_page.png)
 
 ---
 
-![Summary Page](/images/Summary_Page.png)
+![Summary Page](/images/summary_page.png)
 
 ---
 
@@ -22,8 +19,8 @@ and by anyone.
   - PDF
   - DOCX
   - TXT
-  - Image formats: JPG, JPEG, PNG
-- **AI-Powered Summarization**: Leveraging the GPT-4o model, the application automatically generates summaries that include:
+  - Image formats: JPG, PNG
+- **AI-Powered Summarization**: Using the GPT-4o model, the application automatically generates summaries that include:
   - The candidate’s highest degree.
   - Work experience (including the number of years and relevant fields).
   - Key skills and certifications.
@@ -38,9 +35,8 @@ candidates' privacy.
 
 1. **Upload a Resume**: Users can upload resumes in supported formats through the web interface.
 2. **Resume Processing**: The application extracts text using Optical Character Recognition (OCR) for images and other text extraction methods for non-image formats.
-3. **AI-Generated Summary**: The AI model processes the extracted text and generates a summary that highlights the candidate's qualifications and work experience.
-4. **Review and Input**: The Talent Acquisition team can review the summary and input the key data into MyNBK. The application may be expanded in the future to allow automatic profile updates
-in the MyNBK database.
+3. **AI-Generated Summary**: The application processes the extracted text and generates a summary that highlights the candidate's qualifications and work experience.
+4. **Review and Input**: Lastly, the Talent Acquisition team can review the summary and input the key data into the database. The application may be expanded in the future to allow automatic profile updates in the database.
 
 ---
 
@@ -66,8 +62,6 @@ in the MyNBK database.
 - **Total Estimated Annual Cost**: $96.50.
 
 ---
-
-## **Non-Technical Setup**
 
 ### **Prerequisites**
 To run the Resume Summarizer Application locally, ensure that you have the following:
@@ -166,7 +160,7 @@ The `app.py` file contains the core logic of the application. Below are the esse
 
 ### **Next Steps**
 
-- **Integration with MyNBK**: The application can be expanded to automatically update candidate profiles within the MyNBK platform, further streamlining recruitment workflows.
+- **Integration with NBK database**: The application can be expanded to automatically update candidate profiles within the MyNBK platform, further streamlining recruitment workflows.
 - **Multi-Language Support**: Adding support for languages like **Arabic** will enhance accessibility for NBK’s diverse candidate pool.
 
 
