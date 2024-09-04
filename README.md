@@ -2,15 +2,18 @@
 
 ### **Overview**
 
-* The **Resume Summarizer Application** is a web-based tool designed to streamline the recruitment process for NBK’s Talent Acquisition team at the HR department. By automating the summarization of resumes, this application helps reduce manual workload, allowing the team to focus on more important tasks. 
+* During my internship in the HR department at NBK, I worked with the talent acquisition team and found a need for reducing the manual work in the recruitment process. I developed an AI application that could summarize candidates' resumes.
 
-* The application uses GPT-4o for processing and understanding and can process resumes in various formats, extracting key information and presenting it in a concise, structured summary. While it was designed for the Talent Acquisition team at NBK, anyone can use this application.
+
+* The **Resume Summarizer Application** can take resumes in various formats, extract key information, and generates summaries. By reducing some of the manual work in the recruitment process, the team can focus on other (more important) tasks. 
+
+* While the application was designed for the Talent Acquisition team at NBK, anyone can use it. It works locally and can be deployed on Heroku. Check out the following link to deploy the application on [Heroku](https://devcenter.heroku.com/articles/getting-started-with-python)
 
 ---
+### UI/UX
 ![Home Page](/images/Home_Page.png)
 
 ---
-
 ![Summary Page](/images/Summary_Page.png)
 
 ---
@@ -22,13 +25,19 @@
   - DOCX
   - TXT
   - Image formats: JPG, PNG
+ 
+  
 - **AI-Powered Summarization**: Using the GPT-4o model, the application automatically generates summaries that include:
   - The candidate’s highest degree.
   - Work experience (including the number of years and relevant fields).
   - Key skills and certifications.
+ 
+
 - **User-Friendly Interface**: A simple, intuitive design makes it easy for the Talent Acquisition team to upload resumes and review summaries.
+
 - **Data Privacy & Security**: The application does not store any personal data once the resume is processed. Contact information is excluded from the summaries to protect
 candidates' privacy.
+
 - **Request Limit**: To manage system load, each user is limited to 50 requests per day. This ensures fair use and prevents system overload.
 
 ---
@@ -36,8 +45,11 @@ candidates' privacy.
 ### **How It Works**
 
 1. **Upload a Resume**: Users can upload resumes in supported formats through the web interface.
+
 2. **Resume Processing**: The application extracts text using Optical Character Recognition (OCR) for images and other text extraction methods for non-image formats.
+  
 3. **AI-Generated Summary**: The application processes the extracted text and generates a summary that highlights the candidate's qualifications and work experience.
+  
 4. **Review and Input**: Lastly, the Talent Acquisition team can review the summary and input the key data into the database. The application may be expanded in the future to allow automatic profile updates in the database.
 
 ---
@@ -122,10 +134,6 @@ Follow these steps to set up the application locally:
 
 5. **Access the Application**
    The application will be accessible at `http://127.0.0.1:5000` in your web browser.
-
---- 
-Check out the following link to deploy the application on Heroku: 
-- https://devcenter.heroku.com/articles/getting-started-with-python
 
 ---
 
