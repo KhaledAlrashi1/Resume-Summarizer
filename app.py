@@ -15,12 +15,6 @@ from flask_limiter.util import get_remote_address
 # Initialize Flask app
 app = Flask(__name__)
 
-# # Manually set the tesseract path
-# pytesseract.pytesseract.tesseract_cmd = "/app/.heroku/python/bin/tesseract"
-
-# # Set the path to Tesseract executable in your virtual environment
-# pytesseract.pytesseract.tesseract_cmd = r'/Users/khaledalrashidi/anaconda3/envs/ai_env/bin/tesseract'
-
 # Set up the rate limiter to allow a maximum of 50 requests per day per IP address
 limiter = Limiter(
     get_remote_address,  # Use the remote IP address of the client to limit requests

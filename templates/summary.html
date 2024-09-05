@@ -11,7 +11,7 @@
             font-family: 'Inter', sans-serif;
             background: linear-gradient(to left, #003366 78%, #ffffff 30%);
             background-size: 100% 100%;
-            padding-top: 100px;
+            padding-top: 60px;
             color: #333333;
             min-height: 100vh;
             margin: 0;
@@ -47,7 +47,7 @@
 
         @keyframes moveShape4 {
             0% { transform: translate(0, 0); }
-            50% { transform: translate(40px, -25px); }
+            50% { transform: translate(80px, 0px); }
             100% { transform: translate(0, 0); }
         }
 
@@ -89,17 +89,17 @@
 
         .abstract-shape-4 {
             position: absolute;
-            bottom: 83%;
+            bottom: 86%;
             left: 35%;
-            width: 95px;
-            height: 95px;
+            width: 85px;
+            height: 85px;
             background-color: #ffffff;
             border-radius: 50%;
             z-index: 0;
             animation: moveShape4 8s infinite alternate ease-in-out;
         }
-        /* Red horizontal line */
-        .red-line {
+        /* Orange horizontal line */
+        .Orange-line {
             content: '';
             position: absolute;
             width: 100%;
@@ -132,7 +132,7 @@
         }
 
         .card {
-            padding: 40px;
+            padding: 50px;
             border: none;
             border-radius: 25px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -144,8 +144,8 @@
         }
 
         p.card-text {
-            font-size: 1.2rem;
-            line-height: 1.6;
+            font-size: 1.3rem;
+            line-height: 2;
             text-align: justify;
         }
 
@@ -222,8 +222,8 @@
         </div>
     </div>
 
-    <!-- Red line always at the bottom -->
-    <div class="red-line"></div>
+    <!-- Orange line always at the bottom -->
+    <div class="Orange-line"></div>
 
     <!-- Abstract shapes in the background -->
     <div class="abstract-shape-1"></div>
