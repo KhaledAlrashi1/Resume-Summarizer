@@ -11,10 +11,10 @@
 
 ---
 ### UI/UX
-![Index Page](/images/index.png)
+![Index Page](/images/index_page.png)
 
 ---
-![Summary Page](/images/summary.png)
+![Summary Page](/images/summary_page.png)
 
 ---
 
