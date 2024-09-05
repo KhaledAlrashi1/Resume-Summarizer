@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,67 +13,42 @@
             background-size: 100% 100%;
             padding-top: 100px;
             color: #333333;
-            /* position: relative; */
             min-height: 100vh;
             margin: 0;
             overflow: hidden;
         }
 
-        /* Flex-grow container to take up available space */
         .flex-grow {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
 
         /* Background shapes and animations */
         @keyframes moveShape1 {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(-50px, 20px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, 20px); }
+            100% { transform: translate(0, 0); }
         }
 
         @keyframes moveShape2 {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(30px, -40px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -40px); }
+            100% { transform: translate(0, 0); }
         }
 
         @keyframes moveShape3 {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(-40px, 30px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-40px, 30px); }
+            100% { transform: translate(0, 0); }
         }
 
         @keyframes moveShape4 {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(40px, -25px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(40px, -25px); }
+            100% { transform: translate(0, 0); }
         }
 
         .abstract-shape-1 {
@@ -86,7 +60,7 @@
             background-color: #fb750f;
             border-radius: 50%;
             z-index: 0;
-            animation: moveShape1 5s infinite alternate ease-in-out;
+            animation: moveShape1 4s infinite alternate ease-in-out;
         }
 
         .abstract-shape-2 {
@@ -98,7 +72,7 @@
             background-color: #003366;
             border-radius: 50%;
             z-index: 0;
-            animation: moveShape2 7s infinite alternate ease-in-out;
+            animation: moveShape2 6s infinite alternate ease-in-out;
         }
 
         .abstract-shape-3 {
@@ -110,7 +84,7 @@
             background-color: #ffffff;
             border-radius: 50%;
             z-index: 0;
-            animation: moveShape3 8s infinite alternate ease-in-out;
+            animation: moveShape3 5.5s infinite alternate ease-in-out;
         }
 
         .abstract-shape-4 {
@@ -122,14 +96,12 @@
             background-color: #ffffff;
             border-radius: 50%;
             z-index: 0;
-            animation: moveShape4 6s infinite alternate ease-in-out;
+            animation: moveShape4 8s infinite alternate ease-in-out;
         }
-
         /* Red horizontal line */
         .red-line {
             content: '';
             position: absolute;
-            /* width: 24%; */
             width: 100%;
             height: 50px;
             background-color: #fb750f;
@@ -152,38 +124,78 @@
             z-index: 1;
         }
 
-        /* Content wrapper */
+        /* Card styling */
         .container {
             max-width: 750px;
             position: relative;
             z-index: 1;
-            /* margin: auto; */
         }
 
-        /* Card styling */
         .card {
-            padding: 30px;
+            padding: 40px;
             border: none;
             border-radius: 25px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             background-color: #ffffff;
             color: #333333;
             font-size: 1.01rem;
-
+            max-height: 60vh; /* Fixed height for the card */
+            overflow-y: auto; /* Enable scrolling if content exceeds height */
         }
 
-        .card h3 {
-            color: #003366;
+        p.card-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-align: justify;
         }
 
-        .btn-link {
-            color: #fb750f;
+        /* Button styling */
+        .btn-primary, .btn-copy {
+            background-color: #fb750f;
+            border: none;
             font-weight: 500;
-            text-decoration: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            margin-right: 10px; /* Space between buttons */
+            color: white; /* Make text white */
         }
 
-        .btn-link:hover {
-            text-decoration: underline;
+        /* Hover effect for both buttons, keeping the text white */
+        .btn-primary:hover, .btn-copy:hover {
+            background-color: rgb(253, 108, 24);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            color: white; /* Keep the text white on hover */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Custom scrollbar styling for card */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #fb750f;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
         }
     </style>
 </head>
@@ -198,9 +210,14 @@
     <div class="flex-grow">
         <div class="container mt-5">
             <div class="card">
-                <h3 class="text-left mb-4">Summary:</h3>
-                <p class="card-text">{{ summary }}</p>
-                <a href="/" class="btn btn-link">&#8592; Summarize another resume</a>
+                <p class="card-text" id="summaryText">{{ summary }}</p>
+            </div>
+
+            <!-- Buttons container -->
+            <div class="mt-4">
+                <a href="/" class="btn btn-primary btn-lg">Summarize another resume</a>
+                <!-- Copy Button -->
+                <button id="copyButton" class="btn btn-copy btn-lg">Copy Summary</button>
             </div>
         </div>
     </div>
@@ -215,6 +232,40 @@
     <div class="abstract-shape-4"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for the copy-to-clipboard feature -->
+    <script>
+        // Select the summary text and copy button
+        const summaryText = document.getElementById('summaryText');
+        const copyButton = document.getElementById('copyButton');
+
+        // Event listener for the copy button
+        copyButton.addEventListener('click', () => {
+            // Create a temporary textarea to hold the summary text
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = summaryText.textContent;
+
+            // Add the textarea to the body (it's invisible)
+            document.body.appendChild(tempTextarea);
+
+            // Select the text in the textarea and copy it
+            tempTextarea.select();
+            document.execCommand('copy');
+
+            // Remove the textarea from the DOM
+            document.body.removeChild(tempTextarea);
+
+            // Provide feedback to the user (change button text to "Copied!")
+            copyButton.textContent = 'Copied!';
+            copyButton.classList.add('btn-success');
+
+            // Reset the button text after 2 seconds
+            setTimeout(() => {
+                copyButton.textContent = 'Copy Summary';
+                copyButton.classList.remove('btn-success');
+            }, 2000);
+        });
+    </script>
 </body>
 
 </html>
