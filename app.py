@@ -121,7 +121,8 @@ def gpt_read_resume(resume_text):
     # Loop to interact with GPT and generate the summary
     while attempts < max_attempts:
         response = client.chat.completions.create(
-            model="gpt-4o-2024-08-06",  # Specify the GPT model version
+            # model="gpt-4o-2024-08-06",  # Specify the GPT model version
+            model="gpt-4o-mini-2024-07-18",  # Specify the GPT model version
             messages=messages,  # Send the conversation history
             max_tokens=200,  # Limit the length of the summary
             stop=["\n"]  # Stop generating at the end of a sentence
